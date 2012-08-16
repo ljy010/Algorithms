@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * 基数排序
+ * 基数排序, O(dn), 稳定排序。使用了链表数组
  * @author ljy
  *
  */
@@ -51,7 +51,7 @@ public class RadixSort {
 	}
 	
 	/**
-	 * 依赖于稳定的排序，这里使用链表，o(d(n+n^2))
+	 * 依赖于稳定的排序，这里使用链表，o(d(n))
 	 * @param digit
 	 */
 	private void radixSort(int digit){
@@ -60,14 +60,7 @@ public class RadixSort {
 		clear();
 		for(int i : sortArray){
 			int baseDig = (i % base) / k;
-			int insertIndex = 0;
-			for(; insertIndex < digitArray[baseDig].size(); insertIndex++){
-			   Integer qi = digitArray[baseDig].peek();
-			   if(qi > i){
-				   break;
-			   }
-			}
-			((LinkedList<Integer>)digitArray[baseDig]).add(insertIndex, i);
+			digitArray[baseDig].add(i);
 		}
 		
 		int index = 0;

@@ -10,8 +10,8 @@ public class SortUtils {
 		t[j] = tmp;
 	}
 	
-	public static <T extends Comparable<T>> void printSortArray(T[] sortArray){
-		for(T t: sortArray){
+	public static <T extends Comparable<T>> void printSortArray(T[] tarray){
+		for(T t: tarray){
 			System.out.println(t);
 		}
 	}
