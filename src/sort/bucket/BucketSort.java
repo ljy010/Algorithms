@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * 双层桶排序，每个数字先按每４位为一桶，共８桶，每一桶里再按每一位为一桶
+ * 双层桶排序，稳定的,每个数字先按每４位为一桶，共８桶，每一桶里再按每一位为一桶
  * @author linjy
  *
  */
