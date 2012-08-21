@@ -2,6 +2,12 @@ package sort.select;
 
 import sort.SortUtils;
 
+/**
+ * —°‘Ò≈≈–Ú£¨≤ªŒ»∂®£¨O(n^2)
+ * @author linjy
+ *
+ * @param <T>
+ */
 public class SelectSort<T extends Comparable<T>> {
 
 	private T[] sortArray = null;
