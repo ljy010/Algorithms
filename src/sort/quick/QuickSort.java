@@ -2,6 +2,13 @@ package sort.quick;
 
 import sort.SortUtils;
 
+
+/**
+ * øÏ≈≈£¨O(nlog(n)), ≤ªŒ»∂®, µ›πÈ
+ * @author ljy
+ *
+ * @param <T>
+ */
 public class QuickSort<T extends Comparable<T>> {
 
 	private T[] sortArray;
@@ -11,28 +18,40 @@ public class QuickSort<T extends Comparable<T>> {
 	}
 	
 	private int partition(int begin, int end){
-		int middle = (begin + end) / 2;
-		T  middleVal = sortArray[middle];
-		int index = begin;
-		int largeIndex = begin - 1;
-		int smallIndex = largeIndex;
-		while(index <= end){
-			if(sortArray[index].compareTo(middleVal) > 0){
-				largeIndex = index;
+		int key = end;
+		T  keyVal = sortArray[key];
+		int smallIndex = begin - 1;
+		for(int i = begin; i < end; i++){
+			if(sortArray[i].compareTo(keyVal) <= 0){
+				smallIndex++;
+				SortUtils.swap(sortArray, smallIndex, i);
 			}
-				index++;
+		}
+		SortUtils.swap(sortArray, ++smallIndex, key);
+		return smallIndex;
+	}
+	
+	private void quickSort(int begin, int end){
+		if(begin < end){
+			int partition = partition(begin, end);
+			quickSort(begin, partition - 1);
+			quickSort(partition + 1, end);
 		}
 	}
 	
 	public void sort(){
-		
+		quickSort(0, sortArray.length - 1);
+		for(T t : sortArray){
+			System.out.println(t);
+		}
 	}
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Integer[] a = {12, 3, 4, 56, 55, 67, 89, 546, 8};
+		QuickSort<Integer> qs = new QuickSort<Integer>(a);
+		qs.sort();
 	}
 
 }
