@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tree.binaryTree.binaryTreeVisit.BinaryTreeVisitor;
+import tree.binaryTree.binaryTreeVisit.MidOrderBinaryTreeRecursionVisitor;
+import tree.binaryTree.binaryTreeVisit.PostOrderBinaryTreeRecursionVisitor;
 import tree.binaryTree.binaryTreeVisit.PreOrderBinaryTreeRecursionVisitor;
 
 public class BinaryTree {
@@ -83,8 +85,21 @@ public class BinaryTree {
 		BinaryTree bt = new BinaryTree();
 		String treeInputStr = "34, 4, #, 7, #, #, 5, 8, #, #, 9, #, #";
 		BinaryTreeNode<String> root = bt.createBinaryTreeFromStr(treeInputStr);
-		PreOrderBinaryTreeRecursionVisitor<String> preOrderBinaryTreeRecursionVisitor  = new PreOrderBinaryTreeRecursionVisitor<String>();
+		
+		System.out.println("===================================pre order==============");
+		BinaryTreeVisitor<String> preOrderBinaryTreeRecursionVisitor  = new PreOrderBinaryTreeRecursionVisitor<String>();
 		bt.visitTree(preOrderBinaryTreeRecursionVisitor, root);
+		System.out.println("===================================pre order¡¡end==============");
+		
+		System.out.println("===================================mide order==============");
+		BinaryTreeVisitor<String> midOrderBinaryTreeRecursionVisitor  = new MidOrderBinaryTreeRecursionVisitor<String>();
+		bt.visitTree(midOrderBinaryTreeRecursionVisitor, root);
+		System.out.println("===================================mide order end==============");
+		
+		System.out.println("===================================post order==============");
+		BinaryTreeVisitor<String> postOrderBinaryTreeRecursionVisitor  = new PostOrderBinaryTreeRecursionVisitor<String>();
+		bt.visitTree(postOrderBinaryTreeRecursionVisitor, root);
+		System.out.println("===================================post order end==============");
 	}
 
 }

@@ -30,7 +30,7 @@ public class BinaryTreeNode<T> {
 	}
 
 
-	public BinaryTreeNode getParent() {
+	public BinaryTreeNode<T> getParent() {
 		return parent;
 	}
 
