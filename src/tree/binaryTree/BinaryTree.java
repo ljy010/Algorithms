@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tree.binaryTree.binaryTreeVisit.BinaryTreeVisitor;
-import tree.binaryTree.binaryTreeVisit.MidOrderBinaryTreeRecursionVisitor;
-import tree.binaryTree.binaryTreeVisit.PostOrderBinaryTreeRecursionVisitor;
-import tree.binaryTree.binaryTreeVisit.PreOrderBinaryTreeRecursionVisitor;
+import tree.binaryTree.binaryTreeVisit.recursionVisit.MidOrderBinaryTreeRecursionVisitor;
+import tree.binaryTree.binaryTreeVisit.recursionVisit.PostOrderBinaryTreeRecursionVisitor;
+import tree.binaryTree.binaryTreeVisit.recursionVisit.PreOrderBinaryTreeRecursionVisitor;
+import tree.binaryTree.binaryTreeVisit.stackVisit.MidOrderBinaryTreeStackVisitor;
 
 public class BinaryTree {
 	
@@ -25,7 +26,7 @@ public class BinaryTree {
 			String data = bufferReader.readLine().trim();
 			root.setData(data);
 			if ("#".equals(data)) {
-				return root;
+				return null;
 			}
 			BinaryTreeNode<String> leftChild = createBinaryTreeFromInput();
 			root.setLeftChild(leftChild);
@@ -52,7 +53,7 @@ public class BinaryTree {
 		String data = list.get(index);
 		root.setData(data);
 		if("#".equals(data)){
-			return root;
+			return null;
 		}
 		BinaryTreeNode<String> leftChild = createBinaryTreeFromList(list, ++binaryTreeIndex);
 		if(leftChild != null){
@@ -100,6 +101,11 @@ public class BinaryTree {
 		BinaryTreeVisitor<String> postOrderBinaryTreeRecursionVisitor  = new PostOrderBinaryTreeRecursionVisitor<String>();
 		bt.visitTree(postOrderBinaryTreeRecursionVisitor, root);
 		System.out.println("===================================post order end==============");
+		
+		System.out.println("===================================mid order binaryTreeStack visitor start=========================");
+		BinaryTreeVisitor<String> midOrderBinaryTreeStackVisitor = new MidOrderBinaryTreeStackVisitor<String>();
+		bt.visitTree(midOrderBinaryTreeStackVisitor, root);
+		System.out.println("===================================mid order binaryTreeStack visitor end=========================");
 	}
 
 }
