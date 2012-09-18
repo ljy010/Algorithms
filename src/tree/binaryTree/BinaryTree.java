@@ -10,6 +10,7 @@ import tree.binaryTree.binaryTreeVisit.recursionVisit.MidOrderBinaryTreeRecursio
 import tree.binaryTree.binaryTreeVisit.recursionVisit.PostOrderBinaryTreeRecursionVisitor;
 import tree.binaryTree.binaryTreeVisit.recursionVisit.PreOrderBinaryTreeRecursionVisitor;
 import tree.binaryTree.binaryTreeVisit.stackVisit.MidOrderBinaryTreeStackVisitor;
+import tree.binaryTree.binaryTreeVisit.stackVisit.PostOrderBinaryTreeWithoutRecursionVisitor;
 
 public class BinaryTree {
 	
@@ -106,6 +107,11 @@ public class BinaryTree {
 		BinaryTreeVisitor<String> midOrderBinaryTreeStackVisitor = new MidOrderBinaryTreeStackVisitor<String>();
 		bt.visitTree(midOrderBinaryTreeStackVisitor, root);
 		System.out.println("===================================mid order binaryTreeStack visitor end=========================");
+		
+		System.out.println("===================================post order binaryTreeStack visitor start=========================");
+		BinaryTreeVisitor<String> postOrderBinaryTreeStackVisitor = new PostOrderBinaryTreeWithoutRecursionVisitor<String>();
+		bt.visitTree(postOrderBinaryTreeStackVisitor, root);
+		System.out.println("===================================post order binaryTreeStack visitor end=========================");
 	}
 
 }
