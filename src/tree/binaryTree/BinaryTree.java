@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tree.binaryTree.binaryTreeVisit.BinaryTreeVisitor;
+import tree.binaryTree.binaryTreeVisit.noStackVisit.PreOrderBinaryTreeNoStackVisitor;
 import tree.binaryTree.binaryTreeVisit.recursionVisit.MidOrderBinaryTreeRecursionVisitor;
 import tree.binaryTree.binaryTreeVisit.recursionVisit.PostOrderBinaryTreeRecursionVisitor;
 import tree.binaryTree.binaryTreeVisit.recursionVisit.PreOrderBinaryTreeRecursionVisitor;
@@ -111,7 +112,12 @@ public class BinaryTree {
 		System.out.println("===================================post order binaryTreeStack visitor start=========================");
 		BinaryTreeVisitor<String> postOrderBinaryTreeStackVisitor = new PostOrderBinaryTreeWithoutRecursionVisitor<String>();
 		bt.visitTree(postOrderBinaryTreeStackVisitor, root);
-		System.out.println("===================================post order binaryTreeStack visitor end=========================");
+        System.out.println("===================================post order binaryTreeStack visitor end=========================");
+        
+		System.out.println("===================================pre order no binaryTreeStack visitor start=========================");
+		BinaryTreeVisitor<String> preOrderBinaryTreeNoStackVisitor = new PreOrderBinaryTreeNoStackVisitor<String>();
+		bt.visitTree(preOrderBinaryTreeNoStackVisitor, root);
+		System.out.println("===================================pre order no binaryTreeStack visitor end=========================");
 	}
 
 }
