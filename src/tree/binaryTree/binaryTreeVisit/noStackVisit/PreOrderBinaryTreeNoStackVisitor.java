@@ -4,6 +4,11 @@ import tree.binaryTree.BinaryTreeNode;
 
 public class PreOrderBinaryTreeNoStackVisitor<T> extends
 		BinaryTreeNoStackAbstractVisitor<T> {
+	
+	@Override
+	protected  BinaryTreeNode<T> getFirstBinaryTreeNode(BinaryTreeNode<T> root){
+		return root;
+	}
 
 	@Override
 	protected BinaryTreeNode<T> getNextBinaryTreeNode(BinaryTreeNode<T> node) {
@@ -24,5 +29,4 @@ public class PreOrderBinaryTreeNoStackVisitor<T> extends
 		}
 		return null;
 	}
-
 }
