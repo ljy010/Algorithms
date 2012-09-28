@@ -175,7 +175,34 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 	
 	public void treeDelete(BinaryTreeNode node){
+		if(node.getParent() == null){
+			node = null;
+		}
+		BinaryTreeNode replaceNode = null;
+		if((node.getLeftChild() == null) || (node.getRightChild() == null)){
+			replaceNode = node;
+		}
+		else{
+			replaceNode = treeSuccessor(node);
+		}
 		
+		BinaryTreeNode parent = replaceNode.getParent();
+		if(parent == null){
+			node = null;
+		}
+		
+		if(replaceNode.getLeftChild() != null){
+			replaceNode.getLeftChild().setParent(parent);
+			parent.setLeftChild(replaceNode.getLeftChild());
+		}
+		else if(replaceNode.getRightChild() != null){
+			replaceNode.getRightChild().setParent(parent);
+			parent.setRightChild(replaceNode.getRightChild());
+		}
+		
+		if(node.getData().compareTo(replaceNode.getData()) != 0){
+			node.setData(replaceNode.getData());
+		}
 	}
 
 	/**
@@ -192,6 +219,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		
 		BinarySearchTree<String>.BinaryTreeNode result2 = tree.treeSearch(root, "18");
 		System.out.println(result2);
+		
+		System.out.println("========delete=======");
+		tree.treeDelete(result);
+		tree.inorderTreeWalk(root);
 	}
 
 }
