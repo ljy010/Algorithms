@@ -189,15 +189,23 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		BinaryTreeNode parent = replaceNode.getParent();
 		if(parent == null){
 			node = null;
+			return;
 		}
-		
+		BinaryTreeNode child = null;
 		if(replaceNode.getLeftChild() != null){
-			replaceNode.getLeftChild().setParent(parent);
-			parent.setLeftChild(replaceNode.getLeftChild());
+			child = replaceNode.getLeftChild();
 		}
 		else if(replaceNode.getRightChild() != null){
-			replaceNode.getRightChild().setParent(parent);
-			parent.setRightChild(replaceNode.getRightChild());
+			child = replaceNode.getRightChild();
+		}
+		
+		if(child != null){
+			child.setParent(parent);
+		}
+		if(replaceNode == parent.getLeftChild()){
+			parent.setLeftChild(child);
+		}else if(replaceNode == parent.getRightChild()){
+			parent.setRightChild(child);
 		}
 		
 		if(node.getData().compareTo(replaceNode.getData()) != 0){
