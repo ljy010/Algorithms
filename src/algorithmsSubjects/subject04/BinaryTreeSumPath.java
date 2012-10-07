@@ -63,36 +63,38 @@ public class BinaryTreeSumPath {
 	}
 	
 	public void printPath(){
+		System.out.print("route:");
 		for(BinaryTreeNode node : pathList){
-			System.out.println(node.data);
+			System.out.print(node.data + " ");
 		}
+		System.out.println(); 
 	}
 	
 	public void findSumPath(BinaryTreeNode node, int val){
-		pathList.add(node);
 		if(node == null){
-			return ;
+			return;
 		}
-		if(node.data > val){
-			return ;
-		}
-		else{
+		if((node.left == null) && (node.right == null)){
+			if(node.data == val){
+				pathList.add(node);
+				printPath();
+				pathList.remove(pathList.size() - 1);
+			}
+		}else{
 			if(node.left != null){
-				findSumPath(node.left, val - node.data);
-			}else{
-				if(val == node.data){
-					printPath();
+				if(node.data < val){
+					pathList.add(node);
+					findSumPath(node.left, val - node.data);
+					pathList.remove(pathList.size() - 1);
 				}
 			}
-			pathList.remove(pathList.size() - 1);
 			if(node.right != null){
-				findSumPath(node.right, val - node.data);
-			}else{
-				if(val == node.data){
-					printPath();
+				if(node.data < val){
+					pathList.add(node);
+					findSumPath(node.right, val - node.data);
+					pathList.remove(pathList.size() - 1);
 				}
 			}
-			pathList.remove(pathList.size() - 1);
 		}
 	}
 
@@ -103,7 +105,7 @@ public class BinaryTreeSumPath {
 	public static void main(String[] args) {
 		BinaryTreeSumPath  binarySumPath = new BinaryTreeSumPath();
 		BinaryTreeSumPath.BinaryTreeNode root = binarySumPath.createBinaryTree();
-		binarySumPath.findSumPath(root, 22);
+		binarySumPath.findSumPath(root, 20);
 	}
 
 }

@@ -103,7 +103,7 @@ public class BucketSort {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int[] a = {3424,3432423, 1212312312, 34, 55, 77, 22, 1, 20, 30,66, 67, 68, 88, 10, 100, 9};
+		int[] a = {3424,3432423, 1212312312, 34, 55, 55, 77, 22, 1, 20, 30,66, 67, 68, 88, 10, 100, 9};
 		BucketSort bs = new BucketSort(a);
 		bs.sort();
 
